@@ -14,13 +14,16 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-import streamlit as st
 
-st.set_page_config(
-    page_title="My App",
-    layout="wide",
-    initial_sidebar_state="expanded",
-)
+
+st.markdown("""
+    <style>
+    .stApp {
+        background-color: white !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 # --- Text mining helpers ---
 def preprocess_text(s):
@@ -1016,3 +1019,4 @@ st.markdown("""
 </div>
 
 """.format(datetime.now().strftime('%Y-%m-%d %H:%M')), unsafe_allow_html=True)
+
