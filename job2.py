@@ -12,11 +12,11 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 import warnings
 warnings.filterwarnings('ignore')
-import streamlit as st
 
-st.set_page_config(page_title="My App", layout="wide")
+# Page configuration
+st.set_page_config(page_title="Job Market Trends Analyzer", layout="wide", page_icon="💼")
 
-# Force white background for app, sidebar and header using data-testid selectors
+# Comprehensive white background with black text CSS
 st.markdown(
     """
     <style>
@@ -44,12 +44,12 @@ st.markdown(
       /* Header / Toolbars */
       [data-testid="stHeader"],
       [data-testid="stToolbar"] {
-        background-color: transparent !important;
+        background-color: var(--bg) !important;
         color: var(--text) !important;
       }
 
       /* Cards, blocks and other surfaces */
-      .css-1d391kg, .css-1v3fvcr, .css-10trblm {
+      .css-1d391kg, .css-1v3fvcr, .css-10trblm, .main {
         background-color: var(--bg) !important;
         color: var(--text) !important;
       }
@@ -63,14 +63,57 @@ st.markdown(
       a, .stMarkdown a {
         color: #000000 !important;
       }
+
+      /* All text elements black */
+      h1, h2, h3, h4, h5, h6, p, span, div, label, .stMarkdown {
+        color: #000000 !important;
+      }
+
+      /* Metrics and cards white background */
+      .stMetric {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #e0e0e0;
+      }
+
+      /* Insight boxes white */
+      .insight-box {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 5px solid #000000;
+        margin: 10px 0;
+        border: 1px solid #e0e0e0;
+      }
+
+      /* All headings black */
+      h1 {color: #000000 !important; font-weight: 700;}
+      h2 {color: #000000 !important; margin-top: 20px;}
+      h3 {color: #000000 !important;}
+      h4 {color: #000000 !important;}
+
+      /* Streamlit widgets */
+      .stSelectbox, .stTextInput, .stSlider, .stRadio, .stCheckbox {
+        color: #000000 !important;
+      }
+
+      /* Dataframe styling */
+      .dataframe {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+      }
+
+      /* Footer */
+      div[style*="text-align: center"] {
+        color: #000000 !important;
+      }
     </style>
     """,
     unsafe_allow_html=True,
 )
-
-
-
-
 
 # --- Text mining helpers ---
 def preprocess_text(s):
@@ -96,27 +139,6 @@ def extract_top_ngrams_tfidf(docs, ngram_range=(1,1), top_n=20, max_features=500
         return list(zip(terms[top_idx], scores[top_idx]))
     except Exception:
         return []
-
-
-# Page configuration
-st.set_page_config(page_title="Job Market Trends Analyzer", layout="wide", page_icon="💼")
-
-# Custom CSS
-st.markdown("""
-    <style>
-    .main {background-color: #f8f9fa;}
-    .stMetric {background-color: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);}
-    h1 {color: #1f77b4; font-weight: 700;}
-    h2 {color: #2c3e50; margin-top: 20px;}
-    .insight-box {
-        background-color: #e3f2fd;
-        padding: 20px;
-        border-radius: 10px;
-        border-left: 5px solid #1f77b4;
-        margin: 10px 0;
-    }
-    </style>
-""", unsafe_allow_html=True)
 
 # Title and description
 st.title("💼 Job Market Trends Analyzer")
@@ -901,8 +923,8 @@ if df is not None and len(df) > 0:
             
             with col1:
                 st.markdown("""
-                <div class="insight-box" style="border-left-color: #4caf50;">
-                    <h4 style="color: #4caf50;">🟢 High Demand, Low Supply</h4>
+                <div class="insight-box" style="border-left-color: #000000;">
+                    <h4 style="color: #000000;">🟢 High Demand, Low Supply</h4>
                     <ul>
                         <li>MLOps Engineers</li>
                         <li>Cloud Architects</li>
@@ -914,8 +936,8 @@ if df is not None and len(df) > 0:
             
             with col2:
                 st.markdown("""
-                <div class="insight-box" style="border-left-color: #ff9800;">
-                    <h4 style="color: #ff9800;">🟡 Balanced Market</h4>
+                <div class="insight-box" style="border-left-color: #000000;">
+                    <h4 style="color: #000000;">🟡 Balanced Market</h4>
                     <ul>
                         <li>Full Stack Developers</li>
                         <li>Data Scientists</li>
@@ -927,8 +949,8 @@ if df is not None and len(df) > 0:
             
             with col3:
                 st.markdown("""
-                <div class="insight-box" style="border-left-color: #f44336;">
-                    <h4 style="color: #f44336;">🔴 Saturated Roles</h4>
+                <div class="insight-box" style="border-left-color: #000000;">
+                    <h4 style="color: #000000;">🔴 Saturated Roles</h4>
                     <ul>
                         <li>Junior Frontend</li>
                         <li>Basic Web Development</li>
@@ -1060,12 +1082,8 @@ if df is not None and len(df) > 0:
 # Footer
 st.markdown("---")
 st.markdown("""
-<div style='text-align: center; color: #666; padding: 20px;'>
+<div style='text-align: center; color: #000000; padding: 20px;'>
     <p><strong>Job Market Trends Analyzer</strong> | Built with Streamlit & Python</p>
     <p>Data updated: {}</p>
 </div>
-
 """.format(datetime.now().strftime('%Y-%m-%d %H:%M')), unsafe_allow_html=True)
-
-
-
