@@ -10,3 +10,5 @@ beautifulsoup4
 requests
 scrapy
 scikit-learn==1.5.2
+networkx
+
