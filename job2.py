@@ -16,14 +16,6 @@ warnings.filterwarnings('ignore')
 
 
 
-st.markdown("""
-    <style>
-    .stApp {
-        background-color: white !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 
 # --- Text mining helpers ---
 def preprocess_text(s):
@@ -1019,4 +1011,5 @@ st.markdown("""
 </div>
 
 """.format(datetime.now().strftime('%Y-%m-%d %H:%M')), unsafe_allow_html=True)
+
 
