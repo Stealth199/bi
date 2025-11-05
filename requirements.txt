@@ -9,3 +9,5 @@ plotly
 beautifulsoup4
 requests
 scrapy
+sklearn
+
