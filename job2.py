@@ -13,6 +13,15 @@ from sklearn.decomposition import PCA
 import warnings
 warnings.filterwarnings('ignore')
 
+
+import streamlit as st
+
+st.set_page_config(
+    page_title="My App",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
 # --- Text mining helpers ---
 def preprocess_text(s):
     if not isinstance(s, str):
@@ -1005,4 +1014,5 @@ st.markdown("""
     <p><strong>Job Market Trends Analyzer</strong> | Built with Streamlit & Python</p>
     <p>Data updated: {}</p>
 </div>
+
 """.format(datetime.now().strftime('%Y-%m-%d %H:%M')), unsafe_allow_html=True)
