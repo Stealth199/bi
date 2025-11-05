@@ -12,6 +12,61 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 import warnings
 warnings.filterwarnings('ignore')
+import streamlit as st
+
+st.set_page_config(page_title="My App", layout="wide")
+
+# Force white background for app, sidebar and header using data-testid selectors
+st.markdown(
+    """
+    <style>
+      :root {
+        --bg: #ffffff;
+        --secondary-bg: #ffffff;
+        --text: #000000;
+      }
+
+      /* Main app container */
+      [data-testid="stAppViewContainer"],
+      [data-testid="stMain"],
+      .stApp {
+        background-color: var(--bg) !important;
+        color: var(--text) !important;
+      }
+
+      /* Sidebar */
+      [data-testid="stSidebar"],
+      [data-testid="stSidebarNav"] {
+        background-color: var(--secondary-bg) !important;
+        color: var(--text) !important;
+      }
+
+      /* Header / Toolbars */
+      [data-testid="stHeader"],
+      [data-testid="stToolbar"] {
+        background-color: transparent !important;
+        color: var(--text) !important;
+      }
+
+      /* Cards, blocks and other surfaces */
+      .css-1d391kg, .css-1v3fvcr, .css-10trblm {
+        background-color: var(--bg) !important;
+        color: var(--text) !important;
+      }
+
+      /* Remove Streamlit default box shadow if present */
+      .stApp, .css-1v3fvcr, .css-10trblm {
+        box-shadow: none !important;
+      }
+
+      /* Make anchors/links visible on white */
+      a, .stMarkdown a {
+        color: #000000 !important;
+      }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 
@@ -1011,5 +1066,6 @@ st.markdown("""
 </div>
 
 """.format(datetime.now().strftime('%Y-%m-%d %H:%M')), unsafe_allow_html=True)
+
 
 
