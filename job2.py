@@ -110,6 +110,16 @@ st.markdown(
       div[style*="text-align: center"] {
         color: #000000 !important;
       }
+
+         
+    .stMultiSelect div[data-baseweb="select"] {
+        color: white;
+    }
+    .stMultiSelect div[data-baseweb="select"] span {
+        color: white;
+    }
+   
+
     </style>
     """,
     unsafe_allow_html=True,
@@ -1087,3 +1097,4 @@ st.markdown("""
     <p>Data updated: {}</p>
 </div>
 """.format(datetime.now().strftime('%Y-%m-%d %H:%M')), unsafe_allow_html=True)
+
